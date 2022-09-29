@@ -1,11 +1,12 @@
 body {
+    height: 97.5vh;
     background: #d4e1ff;
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .calculator {
@@ -16,6 +17,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 10px 10px 5px -5px #c2cee8;
 }
 
 .display {
