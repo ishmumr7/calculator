@@ -12,7 +12,6 @@ body {
     margin: 50px 0px;
     padding: 20px;
     background: white;
-    border: 2px solid grey;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -23,7 +22,6 @@ body {
     width: 300px;
     padding: 10px 0;
     background: white;
-    /* border: 2px solid black; */
     border-radius: 10px;
 }
 
