@@ -1,0 +1,15 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calculator {
+    margin: 50px 0px;
+    padding: 15px;
+    background: #d4d4d4;
+    border: 2px solid black;
+    border-radius: 10px;
+}
