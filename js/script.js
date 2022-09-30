@@ -1,3 +1,7 @@
+const mainDisplay = document.getElementById("display-value");
+const subDisplay = document.getElementById("display-string");
+const buttons = document.querySelectorAll(".button");
+
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
@@ -17,4 +21,8 @@ const operate = (operator, num1, num2) => {
         case '/':
             return divide(num1, num2);
     }
+}
+
+const clear = () => {
+    
 }
