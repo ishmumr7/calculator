@@ -2,6 +2,12 @@ const mainDisplay = document.getElementById("display-value");
 const subDisplay = document.getElementById("display-string");
 const buttons = document.querySelectorAll(".button");
 
+var num1, num2, operator, previous;
+
+buttons.forEach(button => {
+    
+});
+
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
