@@ -1,8 +1,10 @@
 const mainDisplay = document.getElementById("display-value");
 const subDisplay = document.getElementById("display-string");
 const buttons = document.querySelectorAll(".button");
+const operators = document.querySelectorAll(".button.operator");
 
-var num1, num2, operator, previous;
+var num1 = 0, num2 = 0, operator;
+var operatorSelected = false;
 
 buttons.forEach(button => {
     button.addEventListener('click', display);
@@ -31,8 +33,27 @@ const operate = (operator, num1, num2) => {
 
 function display() {
     let choice = this.dataset.value;
+    let current = mainDisplay.innerHTML;
     if (choice === 'clear') {
         clear();
+    }
+    else if (choice === 'backspace') {
+        
+    }
+    else if (this.classList.contains('operator')) {
+        // console.log('operator!');
+        operatorSelected = true;
+    }
+    else if(choice === '=') {
+
+    }
+    else {
+        if (current === '0' || operatorSelected) {
+            mainDisplay.innerHTML = choice;
+        }
+        else {
+            mainDisplay.innerHTML += choice;
+        }
     }
 }
 
