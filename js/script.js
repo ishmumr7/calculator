@@ -5,7 +5,7 @@ const buttons = document.querySelectorAll(".button");
 var num1, num2, operator, previous;
 
 buttons.forEach(button => {
-    
+    button.addEventListener('click', display);
 });
 
 const add = (a, b) => a + b;
@@ -29,6 +29,14 @@ const operate = (operator, num1, num2) => {
     }
 }
 
+function display() {
+    let choice = this.dataset.value;
+    if (choice === 'clear') {
+        clear();
+    }
+}
+
 const clear = () => {
-    
+    mainDisplay.innerHTML = '0';
+    subDisplay.innerHTML = '';
 }
