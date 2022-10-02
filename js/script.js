@@ -72,11 +72,12 @@ function selectOperator(choiceOperator) {
 
 function calculate() {
     if (operator === null || operatorSelected) {
+        //If no operator  OR  an operator selected currently
         return;
     }
     num2 = mainDisplay.textContent;
     if (num1.includes('%') || num2.includes('%')) {
-        //Move to seperate function
+        //Move to separate function
         if (num1.includes('%')) {
             mainDisplay.innerHTML = roundUp((Number(num1.replace('%', ''))/100)
                 * num2);
@@ -87,6 +88,10 @@ function calculate() {
     }
         operator = null;
         operatorSelected = false;
+}
+
+function operatePercent(a, b) {
+
 }
 
 function addDecimal() {
