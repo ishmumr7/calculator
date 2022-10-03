@@ -6,7 +6,7 @@ const body = document.querySelector("body");
 
 mainDisplay.innerHTML = 0;
 
-var num1 = 0, num2 = 0, operator;
+var num1 = '0', num2 = '0', operator = null;
 var operatorSelected = false;
 
 buttons.forEach(button => {
@@ -69,11 +69,35 @@ function display() {
 }
 
 function handleKeyboard(e) {
-    // console.log(e);
+    if (e.key === 'Escape') {
+        clear();
+    }
+    else if (e.key === 'Backspace') {
+        backspace();
+    }
+    else if (e.key === '+' ||
+            e.key === '-' ||
+            e.key === '*' ||
+            e.key === '/') {
+        selectOperator(e.key);
+    }
+    else if (e.key === 'Enter') {
+        calculate();
+    }
+    else if (e.key === '.') {
+        addDecimal();
+    }
+    else if (e.key === '%') {
+        addPercent();
+    }
+    else if (e.key >= 0 && e.key <= 9) {
+        input(e.key);
+    }
+    else return;
 }
 
 function selectOperator(choiceOperator) {
-    if (choiceOperator !== null) {
+    if (operator !== null) {
         calculate();
     }
     num1 = mainDisplay.textContent;
@@ -88,7 +112,6 @@ function calculate() {
     }
     num2 = mainDisplay.textContent;
     if (num1.includes('%') || num2.includes('%')) {
-        //Move to separate function
         operatePercent(num1, num2)
     }
     else {
