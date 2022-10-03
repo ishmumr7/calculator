@@ -46,7 +46,7 @@ function display() {
         clear();
     }
     else if (choice === 'backspace') {
-
+        backspace();
     }
     else if (this.classList.contains('operator')) {
         selectOperator(choice);
@@ -146,6 +146,18 @@ function clear() {
     mainDisplay.innerHTML = '0';
     subDisplay.innerHTML = '';
     operatorSelected = false;
+}
+
+function backspace() {
+    if (mainDisplay.innerHTML === '0') {
+        return;
+    }
+    else if (mainDisplay.innerHTML.length === 1) {
+        mainDisplay.innerHTML = '0';
+    }
+    else {
+        mainDisplay.innerHTML = mainDisplay.innerHTML.slice(0, -1);
+    }
 }
 
 function roundUp(num) {
