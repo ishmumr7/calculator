@@ -103,6 +103,7 @@ function selectOperator(choiceOperator) {
     num1 = mainDisplay.textContent;
     operator = choiceOperator;
     operatorSelected = true;
+    subDisplay.innerText = `${num1} ${operator}`;
 }
 
 function calculate() {
@@ -122,7 +123,8 @@ function calculate() {
             operatePercent(num1, num2)
         }
         else {
-            mainDisplay.innerHTML = roundUp(operate(operator, num1, num2));
+            mainDisplay.innerText = roundUp(operate(operator, num1, num2));
+            subDisplay.innerText = `${num1} ${operator} ${num2} =`;
         }
     }
     operator = null;
@@ -140,7 +142,8 @@ function operatePercent(a, b) {
     else if (b.includes('%')) {
         b = (Number(b.replace('%', '')) / 100);
     }
-    mainDisplay.innerHTML = roundUp(operate(operator, a, b));
+    mainDisplay.innerText = roundUp(operate(operator, a, b));
+    subDisplay.innerText = `${num1} ${operator} ${num2} =`;
 }
 
 function addDecimal() {
