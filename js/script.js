@@ -2,6 +2,7 @@ const mainDisplay = document.getElementById("display-value");
 const subDisplay = document.getElementById("display-string");
 const buttons = document.querySelectorAll(".button");
 const operators = document.querySelectorAll(".button.operator");
+const body = document.querySelector("body");
 
 mainDisplay.innerHTML = 0;
 
@@ -11,6 +12,8 @@ var operatorSelected = false;
 buttons.forEach(button => {
     button.addEventListener('click', display);
 });
+
+body.addEventListener('keydown', handleKeyboard);
 
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
@@ -65,6 +68,10 @@ function display() {
     }
 }
 
+function handleKeyboard(e) {
+    // console.log(e);
+}
+
 function selectOperator(choiceOperator) {
     if (choiceOperator !== null) {
         calculate();
@@ -87,20 +94,20 @@ function calculate() {
     else {
         mainDisplay.innerHTML = roundUp(operate(operator, num1, num2));
     }
-        operator = null;
-        operatorSelected = false;
+    operator = null;
+    operatorSelected = false;
 }
 
 function operatePercent(a, b) {
     if (a.includes('%') && b.includes('%')) {
-        a = Number(a.replace('%', ''))/100;
-        b = (Number(b.replace('%', ''))/100);
+        a = Number(a.replace('%', '')) / 100;
+        b = (Number(b.replace('%', '')) / 100);
     }
     else if (a.includes('%')) {
-        a = (Number(a.replace('%', ''))/100);
+        a = (Number(a.replace('%', '')) / 100);
     }
     else if (b.includes('%')) {
-        b = (Number(b.replace('%', ''))/100);
+        b = (Number(b.replace('%', '')) / 100);
     }
     mainDisplay.innerHTML = roundUp(operate(operator, a, b));
 }
