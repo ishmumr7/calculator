@@ -3,6 +3,8 @@ const subDisplay = document.getElementById("display-string");
 const buttons = document.querySelectorAll(".button");
 const operators = document.querySelectorAll(".button.operator");
 
+mainDisplay.innerHTML = 0;
+
 var num1 = 0, num2 = 0, operator;
 var operatorSelected = false;
 
@@ -56,6 +58,9 @@ function display() {
     else if (choice === '.') {
         addDecimal();
     }
+    else if (choice === '%') {
+        addPercent();
+    }
     else {
         input(choice);
     }
@@ -78,10 +83,7 @@ function calculate() {
     num2 = mainDisplay.textContent;
     if (num1.includes('%') || num2.includes('%')) {
         //Move to separate function
-        if (num1.includes('%')) {
-            mainDisplay.innerHTML = roundUp((Number(num1.replace('%', ''))/100)
-                * num2);
-        }
+        operatePercent(num1, num2)
     }
     else {
         mainDisplay.innerHTML = roundUp(operate(operator, num1, num2));
@@ -91,7 +93,17 @@ function calculate() {
 }
 
 function operatePercent(a, b) {
-
+    if (a.includes('%') && b.includes('%')) {
+        a = Number(a.replace('%', ''))/100;
+        b = (Number(b.replace('%', ''))/100);
+    }
+    else if (a.includes('%')) {
+        a = (Number(a.replace('%', ''))/100);
+    }
+    else if (b.includes('%')) {
+        b = (Number(b.replace('%', ''))/100);
+    }
+    mainDisplay.innerHTML = roundUp(operate(operator, a, b));
 }
 
 function addDecimal() {
@@ -105,6 +117,17 @@ function addDecimal() {
         mainDisplay.innerHTML += '.';
     }
     operatorSelected = false;
+}
+
+function addPercent() {
+    if (mainDisplay.innerHTML.includes('%') ||
+        mainDisplay.innerHTML === '' ||
+        operatorSelected) {
+        return;
+    }
+    else {
+        mainDisplay.innerHTML += '%';
+    }
 }
 
 function input(choice) {
