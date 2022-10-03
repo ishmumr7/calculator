@@ -76,9 +76,9 @@ function handleKeyboard(e) {
         backspace();
     }
     else if (e.key === '+' ||
-            e.key === '-' ||
-            e.key === '*' ||
-            e.key === '/') {
+        e.key === '-' ||
+        e.key === '*' ||
+        e.key === '/') {
         selectOperator(e.key);
     }
     else if (e.key === 'Enter') {
@@ -110,12 +110,20 @@ function calculate() {
         //If no operator  OR  an operator selected currently
         return;
     }
-    num2 = mainDisplay.textContent;
-    if (num1.includes('%') || num2.includes('%')) {
-        operatePercent(num1, num2)
+    if (operator === '/' && mainDisplay.textContent === '0') {
+        alert("Cannot divide by zero!");
+        // operator = null;
+        // operatorSelected = false;
+        // return;
     }
     else {
-        mainDisplay.innerHTML = roundUp(operate(operator, num1, num2));
+        num2 = mainDisplay.textContent;
+        if (num1.includes('%') || num2.includes('%')) {
+            operatePercent(num1, num2)
+        }
+        else {
+            mainDisplay.innerHTML = roundUp(operate(operator, num1, num2));
+        }
     }
     operator = null;
     operatorSelected = false;
@@ -170,8 +178,8 @@ function input(choice) {
 }
 
 function clear() {
-    num1 = 0;
-    num2 = 0;
+    num1 = '0';
+    num2 = '0';
     operator = null;
     mainDisplay.innerHTML = '0';
     subDisplay.innerHTML = '';
