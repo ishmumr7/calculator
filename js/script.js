@@ -44,7 +44,6 @@ function display() {
 
     if (choice === 'clear') {
         clear();
-        operatorSelected = false;
     }
     else if (choice === 'backspace') {
 
@@ -146,6 +145,7 @@ function clear() {
     operator = null;
     mainDisplay.innerHTML = '0';
     subDisplay.innerHTML = '';
+    operatorSelected = false;
 }
 
 function roundUp(num) {
